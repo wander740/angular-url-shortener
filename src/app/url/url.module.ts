@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UrlRoutingModule } from './url-routing.module';
 import { HomePageComponent } from './containers/home-page/home-page.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { HomePageComponent } from './containers/home-page/home-page.component';
   ],
   imports: [
     CommonModule,
-    UrlRoutingModule
+    UrlRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class UrlModule { }

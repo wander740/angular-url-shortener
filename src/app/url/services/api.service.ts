@@ -13,4 +13,8 @@ export class ApiService {
   list() {
     return this.httpClient.get<TinyUrl>(environment.API);
   }
+
+  submit(url: Partial<TinyUrl>){
+    return this.httpClient.post<TinyUrl>(environment.API, url);
+  }
 }
