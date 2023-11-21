@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TinyUrl } from '../../model/TinyUrl';
+import { ApiService } from '../../services/api.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -7,8 +9,9 @@ import { TinyUrl } from '../../model/TinyUrl';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
-  url: TinyUrl = {
-    id: 0,
-    url: 'a'
+  url$: Observable<TinyUrl>;
+
+  constructor(apiService: ApiService){
+    this.url$ = apiService.list();
   }
 }
