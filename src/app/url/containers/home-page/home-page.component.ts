@@ -14,4 +14,9 @@ export class HomePageComponent {
   constructor(apiService: ApiService){
     this.url$ = apiService.list();
   }
+
+  copyUrl(content: string){
+    console.log("a: "+content)
+    navigator.clipboard.writeText(content)
+  }
 }

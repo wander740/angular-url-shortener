@@ -11,17 +11,18 @@
           <label for="tinyurl">Sua URL pequena:</label>
 
           <div style="width: 100%;" *ngIf="url$ | async as url; else withoutapi">
-            <div *ngIf="url.url.length; else withouturl">
-              <input class="home-page_mid_form2-input" type="text" placeholder="" readonly="readonly" [value]="url.url">
+            <div class="home-page_mid_form2-geturl" *ngIf="url.url.length; else withouturl">
+              <input id="tinyurl" class="home-page_mid_form2-input" type="text" placeholder="" readonly="readonly" [value]="url.url">
+              <button type="button" (click)="copyUrl(url.url)">Copiar</button>
             </div>
             <ng-template #withouturl>
-              <input class="home-page_mid_form2-input" type="text" placeholder="" readonly="readonly" [value]="'abx'">
+              <input id="tinyurl" class="home-page_mid_form2-input" type="text" placeholder="" readonly="readonly" placeholder="a.com">
             </ng-template>
           </div>
           <ng-template #withoutapi>
-            <input class="home-page_mid_form2-input" type="text" placeholder="" readonly="readonly" [value]="'abx'">
+            <input id="tinyurl" class="home-page_mid_form2-input" type="text" placeholder="" readonly="readonly" placeholder="a.com">
           </ng-template>
-          <button type="button">Copiar</button>
+
       </form>
   </div>
 </div>
