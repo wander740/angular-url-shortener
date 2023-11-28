@@ -11,24 +11,26 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+  reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   form = this.formBuilder.group({
     url: ['', [
       Validators.required,
-      Validators.maxLength(1000)
+      Validators.maxLength(1000),
+      Validators.pattern(this.reg)
     ]]
   });
-  url$: Observable<TinyUrl>;
+  url!: TinyUrl;
 
   constructor(
     private apiService: ApiService,
     private formBuilder: NonNullableFormBuilder,
   ){
-    this.url$ = apiService.list();
+
   }
 
   onSubmit(){
     if(this.form.valid){
-      this.apiService.submit(this.form.value).subscribe({
+      let a= this.apiService.submit(this.form.value).subscribe({
         next: (data) => this.onSucess(data), error: (error) => this.onError()
       });
     }
@@ -39,7 +41,7 @@ export class HomePageComponent {
   }
 
   onSucess(data: TinyUrl){
-    navigator.clipboard.writeText(data.url)
+    this.url = data;
   }
 
   copyUrl(content: string){
