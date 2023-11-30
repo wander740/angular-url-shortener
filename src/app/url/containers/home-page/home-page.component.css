@@ -57,10 +57,14 @@
   border: none;
 }
 
-.home-page_mid_form2-geturl button{
+.home-page_mid_form2-geturl-button{
   height: 50px;
   background-color: grey;
+  color: #fff;
   border: none;
   padding: 1rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

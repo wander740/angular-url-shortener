@@ -20,6 +20,7 @@ export class HomePageComponent {
     ]]
   });
   url!: TinyUrl;
+  spinner: boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -30,17 +31,19 @@ export class HomePageComponent {
 
   onSubmit(){
     if(this.form.valid){
-      let a= this.apiService.submit(this.form.value).subscribe({
+      this.spinner = true;
+      this.apiService.submit(this.form.value).subscribe({
         next: (data) => this.onSucess(data), error: (error) => this.onError()
       });
     }
   }
 
   onError(){
-
+    this.spinner = false;
   }
 
   onSucess(data: TinyUrl){
+    this.spinner = false;
     this.url = data;
   }
 
